@@ -3,9 +3,39 @@
 
     <BookForm v-bind:title="title"/>
 
-     <canvas id="render-canvas" touch-action="none"></canvas>
+    <div id="tridiv">
+      <div class="scene" style="-webkit-transform:rotateX(178deg) rotateY(-112deg); -moz-transform:rotateX(178deg) rotateY(-112deg); -ms-transform:rotateX(178deg) rotateY(-112deg); transform:rotateX(178deg) rotateY(-112deg); ">
+        <div class="shape cuboid-1 cub-1">
+          <div class="face ft">
+            <h1 class="main-copy">
+              {{title.title}}
+            </h1>
+            <p class="author">
+              {{title.author}}
+            </p>
+  
+            <img src="" alt="" id="logo">
+            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.15);"></div>
+          </div>
+          <div class="face bk">
+            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);"></div>
+          </div>
+          <div class="face rt">
+            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);"></div>
+          </div>
+          <div class="face lt">
+            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);"></div>
+          </div>
+          <div class="face bm">
+            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);"></div>
+          </div>
+          <div class="face tp">
+            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
- 
 </template>
 
 <script>
@@ -29,7 +59,7 @@ export default {
   props: {
     version: Boolean
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -46,6 +76,11 @@ $book-color: #000a12;
 }
 
 
+.logo {
+  width:120px;
+  height:120px;
+  background-image:url(https://www.festisite.com/static/partylogo/img/logos/google.png);
+}
 
 .main-copy {
   
@@ -190,7 +225,7 @@ $book-color: #000a12;
 }
 .cub-1 .ft {
   background-color:$book-color;
-  //background-image: url(../assets/Blank-GG-cover_1200x1855.png);
+  background-image: url(../assets/Blank-GG-cover_1200x1855.png);
   background-size:cover !important;
   background-repeat:no-repeat;
 
