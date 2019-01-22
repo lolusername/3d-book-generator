@@ -1,0 +1,199 @@
+<template>
+  <section class="book ">
+
+    <BookForm v-bind:title="title"/>
+
+     <canvas id="render-canvas" touch-action="none"></canvas>
+  </section>
+ 
+</template>
+
+<script>
+
+ import BookForm from "./BookForm.vue";
+
+export default {
+  name: "Book",
+    data: function() {
+      return  {
+        title:{
+          title:"Title Here",
+          author:"Author Name"
+        }
+      } 
+  },
+  components: {
+    BookForm
+
+  },
+  props: {
+    version: Boolean
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss">
+$book-color: #000a12;
+
+#logo {
+    max-height: 53px;
+    object-fit: contain;
+    float: right;
+    margin-right: 20px;
+    position: relative;
+    top: 149px;
+}
+
+
+
+.main-copy {
+  
+    color: #fff;
+    margin-top: 140px;
+    margin-left: 20px;
+    font-size: 40px;
+}
+#tridiv {
+  perspective: 800px;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  font-size: 100%;
+      width: 400px;
+    height: 600px;
+}
+.face {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.21);
+}
+.face .author {
+  color:#fff;
+  margin-left:23px;
+}
+.scene, .shape, .face, .face-wrapper, .cr {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+.scene {
+  width: 80em;
+  height: 80em;
+  top: 50%;
+  left: 50%;
+  margin: -40em 0 0 -40em;
+}
+.shape {
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 50%;
+}
+.face, .face-wrapper {
+  overflow: hidden;
+  transform-origin: 0 0;
+  backface-visibility: hidden;
+  /* hidden by default, prevent blinking and other weird rendering glitchs */
+}
+.face {
+  background-size: 100% 100%!important;
+  background-position: center;
+}
+.face-wrapper .face {
+  left: 100%;
+  width: 100%;
+  height: 100%
+}
+.photon-shader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%
+}
+.side {
+  left: 50%;
+}
+.cr, .cr .side {
+  height: 100%;
+}
+[class*="cuboid"] .ft, [class*="cuboid"] .bk {
+  width: 100%;
+  height: 100%;
+}
+[class*="cuboid"] .bk {
+  left: 100%;
+}
+[class*="cuboid"] .rt {
+  transform: rotateY(-90deg) translateX(-50%);
+}
+[class*="cuboid"] .lt {
+  transform: rotateY(90deg) translateX(-50%);
+}
+[class*="cuboid"] .tp {
+  transform: rotateX(90deg) translateY(-50%);
+}
+[class*="cuboid"] .bm {
+  transform: rotateX(-90deg) translateY(-50%);
+}
+[class*="cuboid"] .lt {
+  left: 100%;
+}
+[class*="cuboid"] .bm {
+  top: 100%;
+}
+/* .cub-1 styles */
+.cub-1 {
+  transform:translate3D(0em, -0.125em, -0.125em) rotateX(0deg) rotateY(-90deg) rotateZ(-180deg);
+  opacity:1;
+  width:20em;
+  height:28em;
+      width: 289px;
+    height: 448px;
+  margin:-14em 0 0 -10em;
+}
+.cub-1 .ft {
+  transform:translateZ(3em);
+}
+.cub-1 .bk {
+  transform:translateZ(-3em) rotateY(180deg);
+}
+.cub-1 .rt, .cub-1 .lt {
+  width:6em;
+  height:28em;
+}
+.cub-1 .tp, .cub-1 .bm {
+  width:20em;
+  height:6em;
+}
+.cub-1 .face {
+  background-color:$book-color;
+}
+.cub-1 .ft {
+  background-color:$book-color;
+}
+.cub-1 .bk {
+  background-color:$book-color;
+}
+.cub-1 .tp {
+  background-color:$book-color;
+}
+.cub-1 .bm {
+  background-color:$book-color;
+}
+.cub-1 .lt {
+  background-color:$book-color;
+}
+.cub-1 .rt {
+  background-color:$book-color;
+}
+.cub-1 .ft {
+  background-color:$book-color;
+  //background-image: url(../assets/Blank-GG-cover_1200x1855.png);
+  background-size:cover !important;
+  background-repeat:no-repeat;
+
+
+}
+</style>
