@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "font-awesome": "^4.7.0",
     "vue": "^2.5.21",
     "vue-babylonjs": "^1.0.0-beta.6"
   },

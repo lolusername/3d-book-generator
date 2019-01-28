@@ -1,9 +1,11 @@
 <template>
-  <section class="book ">
+  <section class="book container d-flex flex-column ">
+    <transition>
+          <BookForm v-bind:title="title"/>
+    </transition>
 
-    <BookForm v-bind:title="title"/>
-
-    <div id="tridiv">
+    <div class="book-wrapper d-flex justify-content-center align-items-center">
+      <div id="tridiv">
       <div class="scene" style="-webkit-transform:rotateX(178deg) rotateY(-112deg); -moz-transform:rotateX(178deg) rotateY(-112deg); -ms-transform:rotateX(178deg) rotateY(-112deg); transform:rotateX(178deg) rotateY(-112deg); ">
         <div class="shape cuboid-1 cub-1">
           <div class="face ft">
@@ -13,8 +15,12 @@
             <p class="author">
               {{title.author}}
             </p>
-  
-            <img src="" alt="" id="logo">
+            <ul class="points-list">
+              <li>{{title.point1}}</li>
+              <li>{{title.point2}}</li>
+              <li>{{title.point3}}</li>
+            </ul>
+            <img v-bind:src="title.imgUrl" alt="" id="logo">
             <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.15);"></div>
           </div>
           <div class="face bk">
@@ -34,21 +40,28 @@
           </div>
         </div>
       </div>
+     
+    </div>
+    
     </div>
   </section>
 </template>
 
 <script>
 
- import BookForm from "./BookForm.vue";
+import BookForm from "./BookForm.vue";
 
 export default {
   name: "Book",
     data: function() {
       return  {
         title:{
-          title:"Title Here",
-          author:"Author Name"
+          title:"",
+          author:"",
+          point1:"",
+          point2:"",
+          point3:"",
+          imgUrl:""
         }
       } 
   },
@@ -66,13 +79,19 @@ export default {
 <style lang="scss">
 $book-color: #000a12;
 
+body {
+  background:#f5f5f5;
+}
+
 #logo {
     max-height: 53px;
     object-fit: contain;
     float: right;
     margin-right: 20px;
     position: relative;
-    top: 149px;
+    position: absolute;
+    right: 0;
+    top: 381px;
 }
 
 
@@ -91,7 +110,7 @@ $book-color: #000a12;
 }
 #tridiv {
   perspective: 800px;
-  position: absolute;
+  // position: absolute;
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -230,5 +249,18 @@ $book-color: #000a12;
   background-repeat:no-repeat;
 
 
+}
+.points-list {
+      margin-left: 0;
+    padding-left: 0;
+    list-style-position: inside;
+        margin-top: 80px;
+}
+.points-list>li {
+    color: #fff;
+    position: relative;
+    margin-left: 20px;
+
+    font-size: 14px;
 }
 </style>
