@@ -8,14 +8,14 @@
       <div id="tridiv">
       <div class="scene" style="-webkit-transform:rotateX(178deg) rotateY(-112deg); -moz-transform:rotateX(178deg) rotateY(-112deg); -ms-transform:rotateX(178deg) rotateY(-112deg); transform:rotateX(178deg) rotateY(-112deg); ">
         <div class="shape cuboid-1 cub-1">
-          <div class="face ft">
-            <h1 class="main-copy">
+          <div class="face ft d-flex flex-wrap flex-column">
+            <h1 class="main-copy" :class='{"long-title": title.title.length > 13 && title.title.length< 18,"x-long-title": title.title.length > 18}'>
               {{title.title}}
             </h1>
-            <p class="author">
+            <p class="author mt-auto">
               {{title.author}}
             </p>
-            <ul class="points-list">
+            <ul class="points-list mt-auto">
               <li>{{title.point1}}</li>
               <li>{{title.point2}}</li>
               <li>{{title.point3}}</li>
@@ -82,7 +82,12 @@ $book-color: #000a12;
 body {
   background:#f5f5f5;
 }
-
+.long-title {
+  font-size:30px !important;
+}
+.x-long-title {
+  font-size:20px !important;
+}
 #logo {
     max-height: 53px;
     object-fit: contain;
@@ -104,7 +109,7 @@ body {
 .main-copy {
   
     color: #fff;
-    margin-top: 140px;
+    margin-top: 54%;
     margin-left: 20px;
     font-size: 40px;
 }
@@ -251,10 +256,10 @@ body {
 
 }
 .points-list {
-      margin-left: 0;
+    margin-left: 0;
     padding-left: 0;
     list-style-position: inside;
-        margin-top: 80px;
+    padding-bottom: 22.5%;
 }
 .points-list>li {
     color: #fff;
