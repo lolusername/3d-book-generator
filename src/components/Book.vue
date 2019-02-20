@@ -1,33 +1,40 @@
 <template>
   <section class="book container d-flex flex-column ">
     <transition>
-          <BookForm v-bind:title="title"/>
+          <BookForm v-bind:title="title" :isExpress.sync="isExpress"/>
     </transition>
 
     <div class="book-wrapper d-flex justify-content-center align-items-center">
-      <div id="tridiv">
+      <div id="tridiv" >
       <div class="scene" style="-webkit-transform:rotateX(178deg) rotateY(-112deg); -moz-transform:rotateX(178deg) rotateY(-112deg); -ms-transform:rotateX(178deg) rotateY(-112deg); transform:rotateX(178deg) rotateY(-112deg); ">
         <div class="shape cuboid-1 cub-1">
-          <div class="face ft d-flex flex-wrap flex-column">
+          <div class="face ft " :class="{'express-editions':isExpress}" >
+            <p class="company-name">{{title.coName}} Presents </p>
             <h1 class="main-copy" :class='{"long-title": title.title.length > 13 && title.title.length< 18,"x-long-title": title.title.length > 18}'>
               {{title.title}}
             </h1>
-            <p class="author mt-auto">
+            <p class="author ">
               {{title.author}}
             </p>
-            <ul class="points-list mt-auto">
-              <li>{{title.point1}}</li>
-              <li>{{title.point2}}</li>
-              <li>{{title.point3}}</li>
+            <ul class="points-list" :class='{"long-p-list": title.title.length > 13 && title.title.length< 18,"x-long-p-list": title.title.length > 18}'>
+              <li v-if="title.point1.length">{{title.point1}}</li>
+              <li v-if="title.point1.length" >{{title.point2}}</li>
+              <li v-if="title.point1.length">{{title.point3}}</li>
             </ul>
             <img v-bind:src="title.imgUrl" alt="" id="logo">
             <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.15);"></div>
           </div>
           <div class="face bk">
-            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);"></div>
+          
+            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);">
+              
+            </div>
           </div>
           <div class="face rt">
-            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);"></div>
+             
+            <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);">
+               <div class="band"></div>
+            </div>
           </div>
           <div class="face lt">
             <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.3);"></div>
@@ -61,8 +68,11 @@ export default {
           point1:"",
           point2:"",
           point3:"",
-          imgUrl:""
-        }
+          coName:"",
+          imgUrl:"",
+          isFramed:false
+        },
+        isExpress:false,
       } 
   },
   components: {
@@ -82,10 +92,16 @@ $book-color: #000a12;
 body {
   background:#f5f5f5;
 }
+.company-name {
+  color:#fff;
+  font-size: 12px;
+  margin-left: 20px;
+  margin-top:19px;
+}
 .long-title {
   font-size:30px !important;
 }
-.x-long-title {
+.x-long-title.main-copy {
   font-size:20px !important;
 }
 #logo {
@@ -107,11 +123,12 @@ body {
 }
 
 .main-copy {
-  
+    width:96%;
     color: #fff;
-    margin-top: 54%;
+    margin-top: 120px;
     margin-left: 20px;
-    font-size: 40px;
+    font-size: 34px;
+
 }
 #tridiv {
   perspective: 800px;
@@ -125,11 +142,13 @@ body {
     height: 600px;
 }
 .face {
+  border-radius: 1px;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.21);
+  
 }
 .face .author {
   color:#fff;
-  margin-left:23px;
+  margin-left:20px;
 }
 .scene, .shape, .face, .face-wrapper, .cr {
   position: absolute;
@@ -213,13 +232,13 @@ body {
   margin:-14em 0 0 -10em;
 }
 .cub-1 .ft {
-  transform:translateZ(3em);
+  transform:translateZ(1.5em);
 }
 .cub-1 .bk {
   transform:translateZ(-3em) rotateY(180deg);
 }
 .cub-1 .rt, .cub-1 .lt {
-  width:6em;
+  width:3em;
   height:28em;
 }
 .cub-1 .tp, .cub-1 .bm {
@@ -255,17 +274,35 @@ body {
 
 
 }
+.cub-1 .ft.express-editions {
+      background-image: url(../assets/Blank-GG-Express-cover_1200x1800.jpg) !important;
+}
+
 .points-list {
     margin-left: 0;
     padding-left: 0;
     list-style-position: inside;
     padding-bottom: 22.5%;
+    margin-top: 70px;
+}
+.points-list.long-p-list {
+  margin-top:74px;
+}
+.points-list.x-long-p-list {
+  margin-top:84px;
+}
+.points-list.long-p-list {
+  margin-top:74px;
 }
 .points-list>li {
     color: #fff;
     position: relative;
-    margin-left: 20px;
+    margin-left: 35px;
+      list-style-position: outside;
 
-    font-size: 14px;
+    font-size: 13px;
 }
+	.borders {
+      border:2px solid #333;
+	}
 </style>

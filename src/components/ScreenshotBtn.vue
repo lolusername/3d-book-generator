@@ -1,8 +1,15 @@
 <template>
-    <a v-on:click="toggleMode" href="#" class="float">
+	<div>
+		  <a v-on:click="toggleMode" href="#" class="float">
         <i class="fas fa-2x fa-images"></i>
-		<div>Screenshot Mode</div>
+			<div>Screenshot Mode</div>
+			
     </a>
+		<article class="float under">
+				<button @click="toggleBorder" class="btn btn-link">Toggle Border</button>
+			</article>
+	</div>
+  
 </template>
 
 <script>
@@ -15,7 +22,10 @@ export default {
 	  toggleMode() {
 		  $("form").toggle();
 		  $(".book-wrapper").toggleClass("full-height")
-	  }
+		},
+		toggleBorder() {
+			$("#tridiv").toggleClass("borders")
+		}
   }
   }
 
@@ -24,6 +34,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" >
 .float{
+	&.under{
+		bottom:2px;
+		background-color: transparent;
+		padding:auto;
+		box-shadow: none;
+	}
 	position:fixed;
 
 	bottom:40px;
@@ -43,5 +59,13 @@ a {
 }
 .full-height{
 	height:100vh;
+	}
+	.band {
+		color: #fff;
+    text-indent: 10px;
+    display: block;
+    background: rgba(52,89,50,.95);
+    margin-top: 21px;
+    height: 14px;
 	}
 </style>

@@ -3,11 +3,17 @@
         <h5 class="text-center mt-2">Generate Book Image</h5>
         <div class="row">
             <div class="col">
-                <input v-model="title.title"  type="text" class="form-control" placeholder="Title">
+                <input v-model.trim="title.title"  type="text" class="form-control" placeholder="Title">
             </div>
+            <div class="w-100 d-block d-sm-none"></div>
             <div class="col">
                 <input v-model="title.author" type="text" class="form-control " placeholder="Author">
             </div>
+             <div class="w-100 d-block d-sm-none"></div>
+             <div class="col">
+                <input v-model="title.coName"  type="text" class="form-control" placeholder="Title">
+            </div>
+             <div class="w-100 d-block d-sm-none"></div>
             <div class="col ">
                     <div class="custom-file">
                         <input @change="placeLogo" type="file" class="custom-file-input" id="validatedCustomFile">
@@ -26,6 +32,7 @@
                 <textarea v-model="title.point1" class="form-control" aria-label="With textarea" placeholder="Point 1"></textarea>
                 </div>
             </div>
+             <div class="w-100 d-block d-sm-none"></div>
             <div class="col">
                 <div class="input-group">
                 <div class="input-group-prepend">
@@ -34,6 +41,7 @@
                 <textarea v-model="title.point2" class="form-control" aria-label="With textarea"></textarea>
                 </div>
             </div>
+             <div class="w-100 d-block d-sm-none"></div>
             <div class="col">
                 <div class="input-group">
                 <div class="input-group-prepend">
@@ -42,6 +50,15 @@
                 <textarea v-model="title.point3" class="form-control" aria-label="With textarea"></textarea>
                 </div>
             </div>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="express" v-model="expressEdition" @change="selectExpress">
+                    <label class="form-check-label" for="express">
+                        Express Edition
+                    </label>
+                </div>
+            </div>
+             <div class="w-100 d-block d-sm-none"></div>
         </div>
     </form>
 </template>
@@ -49,8 +66,12 @@
 <script>
 export default {
     name:"BookForm",
-    props: ["title"],
-  
+    props: ["title","isExpress"],
+    data() {
+        return {
+            expressEdition:false
+        }
+    },
     methods: {
         placeLogo(e) {
             
@@ -59,6 +80,9 @@ export default {
             $(".custom-file-label").text(fake_path.split("\\").pop())
             
             this.title.imgUrl = url;
+        },
+        selectExpress(event) {
+            this.$emit('update:isExpress', this.expressEdition)
         }
     }
 };
