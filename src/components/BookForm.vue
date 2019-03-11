@@ -1,7 +1,11 @@
 <template>
     <form>
         <h5 class="text-center mt-2">Generate Book Image</h5>
+        <div id="canvas"></div>
+
+      
         <div class="row">
+      
             <div class="col">
                 <input v-model.trim="title.title"  type="text" class="form-control" placeholder="Title">
             </div>
@@ -11,7 +15,7 @@
             </div>
              <div class="w-100 d-block d-sm-none"></div>
              <div class="col">
-                <input v-model="title.coName"  type="text" class="form-control" placeholder="Title">
+                <input v-model="title.coName"  type="text" class="form-control" placeholder="Sponsor">
             </div>
              <div class="w-100 d-block d-sm-none"></div>
             <div class="col ">
@@ -64,6 +68,7 @@
 </template>
 
 <script>
+
 export default {
     name:"BookForm",
     props: ["title","isExpress"],
@@ -83,6 +88,14 @@ export default {
         },
         selectExpress(event) {
             this.$emit('update:isExpress', this.expressEdition)
+        },
+        genImage() {
+            //alert(1);
+            var canvas = document.getElementById("canvas");
+            rasterizeHTML.drawHTML('Some ' +
+                       '<span style="color: green; font-size: 20px;">HTl,lML</span>' +
+                       ' with an image <img src="someimg.png">',
+                       canvas);
         }
     }
 };

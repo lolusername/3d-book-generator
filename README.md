@@ -1,29 +1,9 @@
 # 3dbook
 
-## Project setup
+A VueJS application used to generate a three-dimensional book image to be saved.
+
+## Generate 3d book 
 ```
-npm install
+work in progress
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -60,12 +60,5 @@ a {
 .full-height{
 	height:100vh;
 	}
-	.band {
-		color: #fff;
-    text-indent: 10px;
-    display: block;
-    background: rgba(52,89,50,.95);
-    margin-top: 21px;
-    height: 14px;
-	}
+
 </style>

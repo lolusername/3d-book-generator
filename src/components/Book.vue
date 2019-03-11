@@ -7,7 +7,7 @@
     <div class="book-wrapper d-flex justify-content-center align-items-center">
       <div id="tridiv" >
       <div class="scene" style="-webkit-transform:rotateX(178deg) rotateY(-112deg); -moz-transform:rotateX(178deg) rotateY(-112deg); -ms-transform:rotateX(178deg) rotateY(-112deg); transform:rotateX(178deg) rotateY(-112deg); ">
-        <div class="shape cuboid-1 cub-1">
+        <div class="shape cuboid-1 cub-1" :class="{'express-editions':isExpress}">
           <div class="face ft " :class="{'express-editions':isExpress}" >
             <p class="company-name">{{title.coName}} Presents </p>
             <h1 class="main-copy" :class='{"long-title": title.title.length > 13 && title.title.length< 18,"x-long-title": title.title.length > 18}'>
@@ -123,7 +123,7 @@ body {
 }
 
 .main-copy {
-    width:96%;
+    width:92%;
     color: #fff;
     margin-top: 120px;
     margin-left: 20px;
@@ -283,14 +283,13 @@ body {
     padding-left: 0;
     list-style-position: inside;
     padding-bottom: 22.5%;
-    margin-top: 70px;
+       position: absolute;
+    bottom: 0;
 }
 .points-list.long-p-list {
   margin-top:74px;
 }
-.points-list.x-long-p-list {
-  margin-top:84px;
-}
+
 .points-list.long-p-list {
   margin-top:74px;
 }
@@ -305,4 +304,21 @@ body {
 	.borders {
       border:2px solid #333;
 	}
+  	.band {
+		color: #fff;
+    text-indent: 10px;
+    display: block;
+    background: rgba(52,89,50,.95);
+    margin-top: 21px;
+    height: 14px;
+
+
+
+	}
+        .express-editions .band {
+          margin-top: 0;
+          height: 25px;
+          background:(rgba(197,135,54,.99))
+        } 
+
 </style>
