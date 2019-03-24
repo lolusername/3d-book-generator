@@ -49,3 +49,6 @@ The project's logic is mostly in the __src__ folder. __src__ contains an __asset
 __Run the program locally__ to see your changes implemented real time. Once you are ready to deploy your changes, run the __build__ command to create the static website content inside __dist__.
 
 
+---
+
+*note: the project is currently hosted on firebase. I've left in firebase config files so one can better understand the Vue Cli configuration choices left.
