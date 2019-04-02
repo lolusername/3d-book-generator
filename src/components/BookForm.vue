@@ -13,7 +13,7 @@
       </div>
       <div class="w-100 d-block d-sm-none"></div>
       <div class="col">
-        <input v-model="book.coName" type="text" class="form-control" placeholder="Sponsor">
+        <input v-model="book.coName" maxlength="36" type="text" class="form-control" placeholder="Sponsor">
       </div>
       <div class="w-100 d-block d-sm-none"></div>
       <div class="col">

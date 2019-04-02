@@ -10,18 +10,18 @@
           <div class="shape cuboid-1 cub-1" :class="{'express-editions':isExpress}">
             <div class="face ft">
               <p class="company-name">
-                <span v-if="isExpress">In Partnership With</span>
+                <span class="mr-1" v-if="isExpress">In Partnership With</span>
                 {{book.coName}}
-                <span v-if="!isExpress">Presents</span>
+                <span class="ml-1" v-if="!isExpress">Presents</span>
               </p>
               <h1
                 class="main-copy"
-                :class='{"long-title": book.title.length > 13 && book.title.length< 18,"x-long-title": book.title.length > 18}'
+                :class='{"long-title": book.title.length > 11 ,"x-long-title": book.title.length > 18}'
               >{{book.title}}</h1>
               <p class="author">{{book.author}}</p>
               <ul
                 class="points-list"
-                :class='{"long-p-list": book.title.length > 13 && book.title.length< 18,"x-long-p-list": book.title.length > 18}'
+                :class='{"small-text-list": book.point1.length > 38 || book.point2.length > 38 || book.point3.length > 38 }'
               >
                 <li v-if="book.point1.length">{{book.point1}}</li>
                 <li v-if="book.point2.length">{{book.point2}}</li>
@@ -96,14 +96,25 @@ body {
 .company-name {
   color: #fff;
   font-size: 12px;
-  margin-left: 20px;
-  margin-top: 19px;
+  padding-left: 20px;
+  margin-top: 21px;
+  background:rgba(52, 89, 50, .95);
+  line-height: 13px;
+  width: auto;
+  display: inline-flex;
+  padding-right: 6px;
+  min-width: 146px;
 }
-.long-title {
-  font-size: 30px !important;
-}
-.x-long-title.main-copy {
-  font-size: 20px !important;
+.main-copy {
+  height:60px;
+  overflow-y: visible;
+  &.long-title {
+  font-size: 32px !important;
+  }
+  &.x-long-title {
+    font-size: 26px !important;
+  }
+
 }
 #logo {
   max-height: 53px;
@@ -125,7 +136,7 @@ body {
 .main-copy {
   width: 86%;
   color: #fff;
-  margin-top: 120px;
+  margin-top: 100px;
   margin-left: 20px;
   font-size: 34px;
 }
@@ -150,7 +161,11 @@ body {
 .face .author {
   color: #fff;
   margin-left: 20px;
+  margin-bottom:20px;
+  height:30px;
+  margin-top: 20px;
 }
+
 .scene,
 .shape,
 .face,
@@ -285,54 +300,58 @@ body {
 }
 
 .express-editions {
+  .face .author {
+    margin-top:0;
+
+    margin-bottom: 35px;
+  }
   .ft {
   background-image: url(../assets/Blank-GG-Express-cover_1200x1800.jpg) !important;
-  }
-  .company-name {
-    font-weight: 700;
-    font-size: 8px;
   }
   #logo {
     top: 392px;
     max-width: 34%;
   }
   .points-list {
-    margin-top: 64px;
-  }
-  .points-list {
-    margin-top: 64px;
+    margin-top:0;
   }
   .main-copy {
     color: #fff;
     margin-top: 160px;
   }
   .company-name {
+    font-weight: 700;
+    font-size: 8px;
     position: absolute;
     bottom: 53px;
     right: 20px;
+    background:transparent;
+    justify-content:flex-end;
+    display: flex;
   }
 }
 .points-list {
+  margin-top: 40px;
   margin-left: 0;
   padding-left: 0;
   list-style-position: inside;
-  padding-bottom: 22.5%;
-  position: absolute;
   bottom: 0;
+  max-width:96%;
+  height: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.points-list.long-p-list {
-  margin-top: 74px;
-}
-
-.points-list.long-p-list {
-  margin-top: 74px;
+ul.small-text-list li {
+  font-size: 10px;
+  line-height: 1;
 }
 .points-list > li {
+
   color: #fff;
   position: relative;
   margin-left: 35px;
   list-style-position: outside;
-
   font-size: 13px;
 }
 .borders {
